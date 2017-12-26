@@ -15,7 +15,7 @@ ethereum_env$rpc_address <- "http://localhost:8545"
 set_rpc_address <- function(url, port = NULL, key = NULL) {
   if (!is.null(port)) url <- paste(url, port, sep = ":")
   #
-  if (!is.null(key)) url <- paste(url, key, sep = "/")
+  if (!is.null(key)) url <- paste(sub("/$", "", url), key, sep = "/")
   #
   ethereum_env$rpc_address <- url
 }
