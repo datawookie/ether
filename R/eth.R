@@ -10,8 +10,12 @@ construct_post_body <- function(method, id, params) {
 # CAN WE USE ID = 1 THROUGHOUT???
 
 get_post_response <- function(method, id, params = "") {
+  body = construct_post_body(method, id, params)
+  #
+  print(body)
+  #
   httr::POST(url = ethereum_env$rpc_address,
-             body = construct_post_body(method, id, params),
+             body = body,
              encode = "json") %>%
   httr::content("parsed")
 }
@@ -222,9 +226,46 @@ eth_getBlockByNumber <- function(block = "latest", full = TRUE) {
 }
 
 # eth_getTransactionByHash
-# eth_getTransactionByBlockHashAndIndex
+
+#' Returns the information about a transaction requested by transaction hash.
+#'
+#' @param hash A transaction hash.
+#'
+#' @return
+#' @export
+#'
+#' @examples
+eth_getTransactionByHash <- function(hash) {
+  get_post_response("eth_getTransactionByHash", 1, list(hash))$result
+}
+
+#' Returns information about a transaction by block hash and transaction index position.
+#'
+#' @param hash A block hash.
+#' @param index
+#'
+#' @return
+#' @export
+#'
+#' @examples
+eth_getTransactionByBlockHashAndIndex <- function(hash, index) {
+  get_post_response("eth_getTransactionByBlockHashAndIndex", 1, list(hash, index))$result
+}
+
 # eth_getTransactionByBlockNumberAndIndex
-# eth_getTransactionReceipt
+
+#' Returns the receipt of a transaction by transaction hash.
+#'
+#' @param hash A transaction hash.
+#'
+#' @return
+#' @export
+#'
+#' @examples
+eth_getTransactionReceipt <- function(hash) {
+  get_post_response("eth_getTransactionReceipt", 1, list(hash))$result
+}
+
 # eth_getUncleByBlockHashAndIndex
 # eth_getUncleByBlockNumberAndIndex
 # eth_getCompilers
