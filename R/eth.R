@@ -207,7 +207,20 @@ eth_getUncleCountByBlockHash <- function(hash) {
 # eth_call
 # eth_estimateGas
 # eth_getBlockByHash
-# eth_getBlockByNumber
+
+#' Returns information about a specified block.
+#'
+#' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
+#' @param full
+#'
+#' @return
+#' @export
+#'
+#' @examples
+eth_getBlockByNumber <- function(block = "latest", full = TRUE) {
+  get_post_response("eth_getBlockByNumber", 1, list(block, full))$result
+}
+
 # eth_getTransactionByHash
 # eth_getTransactionByBlockHashAndIndex
 # eth_getTransactionByBlockNumberAndIndex
