@@ -2,6 +2,16 @@ ethereum_env <- new.env()
 #
 ethereum_env$rpc_address <- "http://localhost:8545"
 
+#' Set address used for RPC.
+#'
+#' @param url
+#' @param port
+#' @param key
+#'
+#' @return
+#' @export
+#'
+#' @examples
 set_rpc_address <- function(url, port = NULL, key = NULL) {
   if (!is.null(port)) url <- paste(url, port, sep = ":")
   #
@@ -10,5 +20,16 @@ set_rpc_address <- function(url, port = NULL, key = NULL) {
   ethereum_env$rpc_address <- url
 }
 
-set_rpc_address("https://mainnet.infura.io/", key = "9BvO7Cvbe3p5FpinlbXv")
+#' Get address used for RPC.
+#'
+#' @return
+#' @export
+#'
+#' @examples
+get_rpc_address <- function() {
+  ethereum_env$rpc_address
+}
+
+# Set default RPC address.
+#
 set_rpc_address("http://localhost", port = 8545)
