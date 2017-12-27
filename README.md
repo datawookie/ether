@@ -1,3 +1,5 @@
+[![Travis-CI Build Status](https://travis-ci.org/DataWookie/ethereum.svg?branch=master)](https://travis-ci.org/DataWookie/ethereum)
+
 # TODO
 
 Use `hexmode()` to deal with results?
