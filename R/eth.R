@@ -171,14 +171,32 @@ eth_getUncleCountByBlockHash <- function(hash) {
   get_post_response("eth_getUncleCountByBlockHash", list(hash))$result %>% strtoi()
 }
 
-# eth_getUncleCountByBlockNumber
-# eth_getCode
-# eth_sign
-# eth_sendTransaction
-# eth_sendRawTransaction
-# eth_call
-# eth_estimateGas
-# eth_getBlockByHash
+#' Returns the number of uncles in a block from a block matching the given block number.
+#'
+#' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
+#'
+#' @return Integer.
+#' @export
+#'
+#' @examples
+#' eth_getUncleCountByBlockNumber("0x4720fe")
+eth_getUncleCountByBlockNumber <- function(block) {
+  get_post_response("eth_getUncleCountByBlockNumber", list(block))$result %>% strtoi()
+}
+
+#' Returns information about a specified block.
+#'
+#' @param hash Hash of a block.
+#' @param full Whether or not to return full transaction objects.
+#'
+#' @return List.
+#' @export
+#'
+#' @examples
+#' eth_getBlockByHash("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79")
+eth_getBlockByHash <- function(hash, full = TRUE) {
+  get_post_response("eth_getBlockByHash", list(hash, full))$result
+}
 
 #' Returns information about a specified block.
 #'
@@ -267,14 +285,3 @@ eth_getUncleByBlockHashAndIndex <- function(hash, index) {
 eth_getUncleByBlockNumberAndIndex <- function(block, index) {
   get_post_response("eth_getUncleByBlockNumberAndIndex", list(block, index))$result
 }
-
-# eth_newFilter
-# eth_newBlockFilter
-# eth_newPendingTransactionFilter
-# eth_uninstallFilter
-# eth_getFilterChanges
-# eth_getFilterLogs
-# eth_getLogs
-
-# eth_submitWork
-# eth_submitHashrate
