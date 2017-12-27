@@ -1,6 +1,6 @@
 Package: ethereum
 Type: Package
-Title: Interfaces with the Ethereum blockchain.
+Title: Interfaces with the Ethereum Blockchain
 Version: 0.1.0
 Authors@R: person("Andrew", "Collier", email = "andrew@exegetic.biz", role = c("aut", "cre"))
 Description: Function wrappers for various RPC calls.
