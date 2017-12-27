@@ -10,8 +10,10 @@
 #'
 #' @return HTTP response.
 #' @keywords internal
-get_post_response <- function(method, params = "") {
+get_post_response <- function(method, params = list()) {
   body = list(jsonrpc = "2.0", method = method, id = 1, params = params) %>% toJSON(auto_unbox = TRUE)
+  #
+  # print(body)
   #
   POST(url = ethereum_env$rpc_address,
              content_type_json(),

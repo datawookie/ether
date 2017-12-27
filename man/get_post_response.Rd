@@ -4,7 +4,7 @@
 \alias{get_post_response}
 \title{Submit POST to Ethereum RPC.}
 \usage{
-get_post_response(method, params = "")
+get_post_response(method, params = list())
 }
 \arguments{
 \item{method}{RPC method.}
