@@ -102,7 +102,7 @@ eth_blockNumber <- function() {
   get_post_response("eth_blockNumber")$result %>% strtoi()
 }
 
-#' Returns the balance of the account at specified address.
+#' Returns the balance (in Wei) of the account at specified address.
 #'
 #' @param address A 20 byte (hexadecimal) Ethereum address.
 #' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
@@ -113,9 +113,16 @@ eth_blockNumber <- function() {
 #' @examples
 #' \dontrun{
 #' eth_getBalance()
+#' eth_getBalance("0xD34DA389374CAAD1A048FBDC4569AAE33fD5a375")
 #' }
 eth_getBalance <- function(address = NULL, block = "latest") {
-  if (is.null(address)) address = eth_coinbase()
+  if (is.null(address)) {
+    address = eth_coinbase()
+    #
+    # If there is no coinbase available.
+    #
+    if (is.null(address)) stop("Must specify address.")
+  }
   get_post_response("eth_getBalance", list(address, block))$result %>% mpfr(base = 16)
 }
 
