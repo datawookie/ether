@@ -2,7 +2,7 @@
 % Please edit documentation in R/eth.R
 \name{eth_getBalance}
 \alias{eth_getBalance}
-\title{Returns the balance of the account at specified address.}
+\title{Returns the balance (in Wei) of the account at specified address.}
 \usage{
 eth_getBalance(address = NULL, block = "latest")
 }
@@ -15,10 +15,11 @@ eth_getBalance(address = NULL, block = "latest")
 Integer.
 }
 \description{
-Returns the balance of the account at specified address.
+Returns the balance (in Wei) of the account at specified address.
 }
 \examples{
 \dontrun{
 eth_getBalance()
+eth_getBalance("0xD34DA389374CAAD1A048FBDC4569AAE33fD5a375")
 }
 }
