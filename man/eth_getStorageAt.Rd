@@ -7,6 +7,8 @@
 eth_getStorageAt(address, position, block = "latest")
 }
 \arguments{
+\item{address}{A 20 byte (hexadecimal) Ethereum address.}
+
 \item{position}{Position in the storage.}
 
 \item{block}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}

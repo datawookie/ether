@@ -7,6 +7,8 @@
 eth_getBalance(address = NULL, block = "latest")
 }
 \arguments{
+\item{address}{A 20 byte (hexadecimal) Ethereum address.}
+
 \item{block}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
 }
 \description{

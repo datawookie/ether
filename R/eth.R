@@ -127,7 +127,7 @@ eth_blockNumber <- function() {
 
 #' Returns the balance of the account at specified address.
 #'
-#' @param address
+#' @param address A 20 byte (hexadecimal) Ethereum address.
 #' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
 #'
 #' @return
@@ -141,7 +141,7 @@ eth_getBalance <- function(address = NULL, block = "latest") {
 
 #' Returns the value from a storage position at a given address.
 #'
-#' @param address
+#' @param address A 20 byte (hexadecimal) Ethereum address.
 #' @param position Position in the storage.
 #' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
 #'
@@ -155,7 +155,7 @@ eth_getStorageAt <- function(address, position, block = "latest") {
 
 #' Title
 #'
-#' @param address
+#' @param address A 20 byte (hexadecimal) Ethereum address.
 #' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
 #'
 #' @return
@@ -215,7 +215,7 @@ eth_getUncleCountByBlockHash <- function(hash) {
 #' Returns information about a specified block.
 #'
 #' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
-#' @param full
+#' @param full Whether or not to return full transaction objects.
 #'
 #' @return
 #' @export
@@ -242,7 +242,7 @@ eth_getTransactionByHash <- function(hash) {
 #' Returns information about a transaction by block hash and transaction index position.
 #'
 #' @param hash A block hash.
-#' @param index
+#' @param index Index of transaction in block.
 #'
 #' @return
 #' @export
@@ -268,10 +268,6 @@ eth_getTransactionReceipt <- function(hash) {
 
 # eth_getUncleByBlockHashAndIndex
 # eth_getUncleByBlockNumberAndIndex
-# eth_getCompilers
-# eth_compileLLL
-# eth_compileSolidity
-# eth_compileSerpent
 # eth_newFilter
 # eth_newBlockFilter
 # eth_newPendingTransactionFilter
@@ -280,5 +276,16 @@ eth_getTransactionReceipt <- function(hash) {
 # eth_getFilterLogs
 # eth_getLogs
 # eth_getWork
+
+#' Returns the hash of the current block, the seedHash, and the boundary condition to be met ("target").
+#'
+#' @return
+#' @export
+#'
+#' @examples
+eth_getWork <- function() {
+  get_post_response("eth_getWork", 1)$result
+}
+
 # eth_submitWork
 # eth_submitHashrate

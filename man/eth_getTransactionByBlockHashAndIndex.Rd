@@ -9,7 +9,7 @@ eth_getTransactionByBlockHashAndIndex(hash, index)
 \arguments{
 \item{hash}{A block hash.}
 
-\item{index}{}
+\item{index}{Index of transaction in block.}
 }
 \description{
 Returns information about a transaction by block hash and transaction index position.

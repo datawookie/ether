@@ -9,7 +9,7 @@ eth_getBlockByNumber(block = "latest", full = TRUE)
 \arguments{
 \item{block}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
 
-\item{full}{}
+\item{full}{Whether or not to return full transaction objects.}
 }
 \description{
 Returns information about a specified block.

@@ -4,9 +4,9 @@ ethereum_env$rpc_address <- "http://localhost:8545"
 
 #' Set address used for RPC.
 #'
-#' @param url
-#' @param port
-#' @param key
+#' @param url URL for RPC endpoint.
+#' @param port Port number for RPC connection.
+#' @param key Connection key.
 #'
 #' @return
 #' @export
