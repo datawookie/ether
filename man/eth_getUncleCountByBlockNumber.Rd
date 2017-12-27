@@ -16,5 +16,7 @@ Integer.
 Returns the number of uncles in a block from a block matching the given block number.
 }
 \examples{
+\dontrun{
 eth_getUncleCountByBlockNumber("0x4720fe")
+}
 }

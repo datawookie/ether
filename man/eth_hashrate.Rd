@@ -13,5 +13,7 @@ Integer.
 Returns the number of hashes per second that the node is mining with.
 }
 \examples{
+\dontrun{
 eth_hashrate()
+}
 }

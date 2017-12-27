@@ -13,5 +13,7 @@ Integer.
 Returns the number of most recent block.
 }
 \examples{
+\dontrun{
 eth_blockNumber()
+}
 }

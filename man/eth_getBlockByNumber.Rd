@@ -18,6 +18,8 @@ List.
 Returns information about a specified block.
 }
 \examples{
+\dontrun{
 eth_getBlockByNumber()
 eth_getBlockByNumber("0x4720FE")
+}
 }

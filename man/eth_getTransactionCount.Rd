@@ -18,5 +18,7 @@ Integer.
 Returns the number of transactions sent from an address.
 }
 \examples{
+\dontrun{
 eth_getTransactionCount("0xD34DA389374CAAD1A048FBDC4569AAE33fD5a375")
+}
 }

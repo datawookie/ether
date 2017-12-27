@@ -13,5 +13,7 @@ Integer.
 Returns the current gas price in wei.
 }
 \examples{
+\dontrun{
 eth_gasPrice()
+}
 }

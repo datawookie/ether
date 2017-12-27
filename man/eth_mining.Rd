@@ -13,5 +13,7 @@ Boolean.
 Returns true if client is actively mining new blocks.
 }
 \examples{
+\dontrun{
 eth_mining()
+}
 }

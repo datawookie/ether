@@ -13,8 +13,8 @@
 get_post_response <- function(method, params = "") {
   body = list(jsonrpc = "2.0", method = method, id = 1, params = params) %>% toJSON(auto_unbox = TRUE)
   #
-  httr::POST(url = ethereum_env$rpc_address,
+  POST(url = ethereum_env$rpc_address,
              content_type_json(),
              body = body) %>%
-    httr::content("parsed")
+    content("parsed")
 }

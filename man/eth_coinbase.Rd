@@ -13,5 +13,7 @@ A 20 byte (hexadecimal) Ethereum address.
 Returns the client coinbase address.
 }
 \examples{
+\dontrun{
 eth_coinbase()
+}
 }

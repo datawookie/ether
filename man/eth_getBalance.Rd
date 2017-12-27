@@ -18,5 +18,7 @@ Integer.
 Returns the balance of the account at specified address.
 }
 \examples{
+\dontrun{
 eth_getBalance()
+}
 }

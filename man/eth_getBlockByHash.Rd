@@ -18,5 +18,7 @@ List.
 Returns information about a specified block.
 }
 \examples{
+\dontrun{
 eth_getBlockByHash("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79")
+}
 }

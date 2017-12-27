@@ -16,6 +16,8 @@ Integer.
 Returns the number of transactions in a specified block.
 }
 \examples{
+\dontrun{
 eth_getBlockTransactionCountByNumber("0x4720FF")
 eth_getBlockTransactionCountByNumber()
+}
 }

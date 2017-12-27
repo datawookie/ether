@@ -13,5 +13,7 @@ Integer.
 Returns the current ethereum protocol version.
 }
 \examples{
+\dontrun{
 eth_protocolVersion()
+}
 }

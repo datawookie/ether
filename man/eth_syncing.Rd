@@ -13,5 +13,7 @@ Boolean.
 Returns an object with data about the sync status.
 }
 \examples{
+\dontrun{
 eth_syncing()
+}
 }

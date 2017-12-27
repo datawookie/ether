@@ -13,5 +13,7 @@ A vector of 20 byte (hexadecimal) Ethereum address.
 Returns addresses owned by client.
 }
 \examples{
+\dontrun{
 eth_accounts()
+}
 }
