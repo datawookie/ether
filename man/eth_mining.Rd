@@ -6,6 +6,12 @@
 \usage{
 eth_mining()
 }
+\value{
+Boolean.
+}
 \description{
 Returns true if client is actively mining new blocks.
+}
+\examples{
+eth_mining()
 }

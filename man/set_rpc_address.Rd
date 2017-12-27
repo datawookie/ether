@@ -16,3 +16,6 @@ set_rpc_address(url, port = NULL, key = NULL)
 \description{
 Set address used for RPC.
 }
+\examples{
+set_rpc_address("http://localhost:8545")
+}

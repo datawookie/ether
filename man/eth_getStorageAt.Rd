@@ -13,6 +13,12 @@ eth_getStorageAt(address, position, block = "latest")
 
 \item{block}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
 }
+\value{
+Hex string.
+}
 \description{
 Returns the value from a storage position at a given address.
+}
+\examples{
+eth_getStorageAt("0x3589d05a1ec4Af9f65b0E5554e645707775Ee43C", "0x0")
 }

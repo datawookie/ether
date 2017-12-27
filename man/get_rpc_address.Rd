@@ -6,6 +6,9 @@
 \usage{
 get_rpc_address()
 }
+\value{
+URL.
+}
 \description{
 Get address used for RPC.
 }

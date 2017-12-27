@@ -1,128 +1,89 @@
-construct_post_body <- function(method, id, params) {
-  list(jsonrpc = "2.0", method = method, id = id, params = params)
-}
-
-# CAN WE USE ID = 1 THROUGHOUT???
-# CAN WE USE ID = 1 THROUGHOUT???
-# CAN WE USE ID = 1 THROUGHOUT???
-# CAN WE USE ID = 1 THROUGHOUT???
-# CAN WE USE ID = 1 THROUGHOUT???
-# CAN WE USE ID = 1 THROUGHOUT???
-
-get_post_response <- function(method, id, params = "") {
-  body = construct_post_body(method, id, params)
-  #
-  print(body)
-  #
-  httr::POST(url = ethereum_env$rpc_address,
-             body = body,
-             encode = "json") %>%
-  httr::content("parsed")
-}
-
-
-#
-# THIS NEEDS TO BE REPLACED
-#
-# THIS NEEDS TO BE REPLACED
-#
-# ethereum_env$rpc_address <- "https://mainnet.infura.io/9BvO7Cvbe3p5FpinlbXv"
-#
-# https://infura.io/setup
-#
-# THIS CAN BE USED FOR TESTING. JUST HIDE API KEY (LAST PART OF URL BELOW)
-#
-# $ curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc": "2.0", "id": 83, "method": "eth_blockNumber", "params": []}' "https://mainnet.infura.io/9BvO7Cvbe3p5FpinlbXv"
-
-
-
-
-
-
-
-
-
-
-
-
 #' Returns the current ethereum protocol version.
 #'
-#' @return
+#' @return Integer.
 #' @export
 #'
 #' @examples
+#' eth_protocolVersion()
 eth_protocolVersion <- function() {
-  get_post_response("eth_protocolVersion", 67)$result %>% strtoi()
+  get_post_response("eth_protocolVersion")$result %>% strtoi()
 }
 
 #' Returns an object with data about the sync status.
 #'
-#' @return
+#' @return Boolean.
 #' @export
 #'
 #' @examples
+#' eth_syncing()
 eth_syncing <- function() {
-  get_post_response("eth_syncing", 1)$result
+  get_post_response("eth_syncing")$result
 }
 
 #' Returns the client coinbase address.
 #'
-#' @return
+#' @return A 20 byte (hexadecimal) Ethereum address.
 #' @export
 #'
 #' @examples
+#' eth_coinbase()
 eth_coinbase <- function() {
-  get_post_response("eth_coinbase", 64)$result
+  get_post_response("eth_coinbase")$result
 }
 
 #' Returns true if client is actively mining new blocks.
 #'
-#' @return
+#' @return Boolean.
 #' @export
 #'
 #' @examples
+#' eth_mining()
 eth_mining <- function() {
-  get_post_response("eth_mining", 71)$result
+  get_post_response("eth_mining")$result
 }
 
 #' Returns the number of hashes per second that the node is mining with.
 #'
-#' @return
+#' @return Integer.
 #' @export
 #'
 #' @examples
+#' eth_hashrate()
 eth_hashrate <- function() {
-  get_post_response("eth_hashrate", 71)$result %>% strtoi()
+  get_post_response("eth_hashrate")$result %>% strtoi()
 }
 
-#' Returns the current price per gas in wei.
+#' Returns the current gas price in wei.
 #'
-#' @return
+#' @return Integer.
 #' @export
 #'
 #' @examples
+#' eth_gasPrice()
 eth_gasPrice <- function() {
-  get_post_response("eth_gasPrice", 73)$result %>% mpfr(base = 16)
+  get_post_response("eth_gasPrice")$result %>% mpfr(base = 16)
 }
 
 #' Returns addresses owned by client.
 #'
-#' @return
+#' @return A vector of 20 byte (hexadecimal) Ethereum address.
 #' @export
 #'
 #' @examples
+#' eth_accounts()
 eth_accounts <- function() {
-  get_post_response("eth_accounts", 1)$result %>% unlist()
+  get_post_response("eth_accounts")$result %>% unlist()
 }
 
 #' Returns the number of most recent block.
 #'
-#' @return
+#' @return Integer.
 #' @export
 #'
 #' @examples
+#' eth_blockNumber()
 eth_blockNumber <- function() {
-  get_post_response("eth_blockNumber", 1)$result %>% strtoi()
+  get_post_response("eth_blockNumber")$result %>% strtoi()
 }
 
 #' Returns the balance of the account at specified address.
@@ -130,13 +91,14 @@ eth_blockNumber <- function() {
 #' @param address A 20 byte (hexadecimal) Ethereum address.
 #' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
 #'
-#' @return
+#' @return Integer.
 #' @export
 #'
 #' @examples
+#' eth_getBalance()
 eth_getBalance <- function(address = NULL, block = "latest") {
   if (is.null(address)) address = eth_coinbase()
-  get_post_response("eth_getBalance", 1, list(address, block))$result %>% mpfr(base = 16)
+  get_post_response("eth_getBalance", list(address, block))$result %>% mpfr(base = 16)
 }
 
 #' Returns the value from a storage position at a given address.
@@ -145,62 +107,68 @@ eth_getBalance <- function(address = NULL, block = "latest") {
 #' @param position Position in the storage.
 #' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
 #'
-#' @return
+#' @return Hex string.
 #' @export
 #'
 #' @examples
+#' eth_getStorageAt("0x3589d05a1ec4Af9f65b0E5554e645707775Ee43C", "0x0")
 eth_getStorageAt <- function(address, position, block = "latest") {
-  get_post_response("eth_getStorageAt", 1, list(address, position, block))$result
+  get_post_response("eth_getStorageAt", list(address, position, block))$result
 }
 
-#' Title
+#' Returns the number of transactions sent from an address.
 #'
 #' @param address A 20 byte (hexadecimal) Ethereum address.
 #' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
 #'
-#' @return
+#' @return Integer.
 #' @export
 #'
 #' @examples
+#' eth_getTransactionCount("0xD34DA389374CAAD1A048FBDC4569AAE33fD5a375")
 eth_getTransactionCount <- function(address = NULL, block = "latest") {
   if (is.null(address)) address = eth_coinbase()
-  get_post_response("eth_getTransactionCount", 1, list(address, block))$result %>% strtoi()
+  get_post_response("eth_getTransactionCount", list(address, block))$result %>% strtoi()
 }
 
-#' Returns the number of transactions in a block from a block matching the given block hash.
+#' Returns the number of transactions in a block matching the given block hash.
 #'
 #' @param hash Hash of a block.
 #'
-#' @return
+#' @return Integer.
 #' @export
 #'
 #' @examples
+#' eth_getBlockTransactionCountByHash("0xb6d656ead4c3d4b1aa24d6b4d3d4cde8c090794e597258993512d650f088fcba")
 eth_getBlockTransactionCountByHash <- function(hash) {
-  get_post_response("eth_getBlockTransactionCountByHash", 1, list(hash))$result %>% strtoi()
+  get_post_response("eth_getBlockTransactionCountByHash", list(hash))$result %>% strtoi()
 }
 
 #' Returns the number of transactions in a specified block.
 #'
 #' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
 #'
-#' @return
+#' @return Integer.
 #' @export
 #'
 #' @examples
+#' eth_getBlockTransactionCountByNumber("0x4720FF")
+#' eth_getBlockTransactionCountByNumber()
 eth_getBlockTransactionCountByNumber <- function(block = "latest") {
-  get_post_response("eth_getBlockTransactionCountByNumber", 1, list(block))$result %>% strtoi()
+  get_post_response("eth_getBlockTransactionCountByNumber", list(block))$result %>% strtoi()
 }
 
 #' Returns the number of uncles in a block from a block matching the given block hash.
 #'
 #' @param hash Hash of a block.
 #'
-#' @return
+#' @return Integer.
 #' @export
 #'
 #' @examples
+#' eth_getUncleCountByBlockHash("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79")
 eth_getUncleCountByBlockHash <- function(hash) {
-  get_post_response("eth_getUncleCountByBlockHash", 1, list(hash))$result %>% strtoi()
+  get_post_response("eth_getUncleCountByBlockHash", list(hash))$result %>% strtoi()
 }
 
 # eth_getUncleCountByBlockNumber
@@ -217,26 +185,29 @@ eth_getUncleCountByBlockHash <- function(hash) {
 #' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
 #' @param full Whether or not to return full transaction objects.
 #'
-#' @return
+#' @return List.
 #' @export
 #'
 #' @examples
+#' eth_getBlockByNumber()
+#' eth_getBlockByNumber("0x4720FE")
 eth_getBlockByNumber <- function(block = "latest", full = TRUE) {
-  get_post_response("eth_getBlockByNumber", 1, list(block, full))$result
+  get_post_response("eth_getBlockByNumber", list(block, full))$result
 }
 
 # eth_getTransactionByHash
 
-#' Returns the information about a transaction requested by transaction hash.
+#' Returns the information about a transaction.
 #'
 #' @param hash A transaction hash.
 #'
-#' @return
+#' @return List.
 #' @export
 #'
 #' @examples
+#' eth_getTransactionByHash("0x194c67ef1a36990e1aefc7a7ed7855fc2b65c56b588c2ef69e58be2c492a57db")
 eth_getTransactionByHash <- function(hash) {
-  get_post_response("eth_getTransactionByHash", 1, list(hash))$result
+  get_post_response("eth_getTransactionByHash", list(hash))$result
 }
 
 #' Returns information about a transaction by block hash and transaction index position.
@@ -244,12 +215,14 @@ eth_getTransactionByHash <- function(hash) {
 #' @param hash A block hash.
 #' @param index Index of transaction in block.
 #'
-#' @return
+#' @return List.
 #' @export
 #'
 #' @examples
+#' eth_getTransactionByBlockHashAndIndex("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0x0")
+#' eth_getTransactionByBlockHashAndIndex("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0xa3")
 eth_getTransactionByBlockHashAndIndex <- function(hash, index) {
-  get_post_response("eth_getTransactionByBlockHashAndIndex", 1, list(hash, index))$result
+  get_post_response("eth_getTransactionByBlockHashAndIndex", list(hash, index))$result
 }
 
 # eth_getTransactionByBlockNumberAndIndex
@@ -258,12 +231,13 @@ eth_getTransactionByBlockHashAndIndex <- function(hash, index) {
 #'
 #' @param hash A transaction hash.
 #'
-#' @return
+#' @return List.
 #' @export
 #'
 #' @examples
+#' eth_getTransactionReceipt("0x194c67ef1a36990e1aefc7a7ed7855fc2b65c56b588c2ef69e58be2c492a57db")
 eth_getTransactionReceipt <- function(hash) {
-  get_post_response("eth_getTransactionReceipt", 1, list(hash))$result
+  get_post_response("eth_getTransactionReceipt", list(hash))$result
 }
 
 # eth_getUncleByBlockHashAndIndex
@@ -275,17 +249,6 @@ eth_getTransactionReceipt <- function(hash) {
 # eth_getFilterChanges
 # eth_getFilterLogs
 # eth_getLogs
-# eth_getWork
-
-#' Returns the hash of the current block, the seedHash, and the boundary condition to be met ("target").
-#'
-#' @return
-#' @export
-#'
-#' @examples
-eth_getWork <- function() {
-  get_post_response("eth_getWork", 1)$result
-}
 
 # eth_submitWork
 # eth_submitHashrate

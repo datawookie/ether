@@ -9,6 +9,13 @@ eth_getBlockTransactionCountByNumber(block = "latest")
 \arguments{
 \item{block}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
 }
+\value{
+Integer.
+}
 \description{
 Returns the number of transactions in a specified block.
+}
+\examples{
+eth_getBlockTransactionCountByNumber("0x4720FF")
+eth_getBlockTransactionCountByNumber()
 }

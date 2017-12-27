@@ -6,6 +6,12 @@
 \usage{
 eth_syncing()
 }
+\value{
+Boolean.
+}
 \description{
 Returns an object with data about the sync status.
+}
+\examples{
+eth_syncing()
 }

@@ -6,6 +6,12 @@
 \usage{
 eth_hashrate()
 }
+\value{
+Integer.
+}
 \description{
 Returns the number of hashes per second that the node is mining with.
+}
+\examples{
+eth_hashrate()
 }

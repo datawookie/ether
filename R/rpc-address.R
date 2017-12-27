@@ -8,10 +8,10 @@ ethereum_env$rpc_address <- "http://localhost:8545"
 #' @param port Port number for RPC connection.
 #' @param key Connection key.
 #'
-#' @return
 #' @export
 #'
 #' @examples
+#' set_rpc_address("http://localhost:8545")
 set_rpc_address <- function(url, port = NULL, key = NULL) {
   if (!is.null(port)) url <- paste(url, port, sep = ":")
   #
@@ -22,10 +22,8 @@ set_rpc_address <- function(url, port = NULL, key = NULL) {
 
 #' Get address used for RPC.
 #'
-#' @return
+#' @return URL.
 #' @export
-#'
-#' @examples
 get_rpc_address <- function() {
   ethereum_env$rpc_address
 }

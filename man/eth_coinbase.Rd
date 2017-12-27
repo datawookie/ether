@@ -6,6 +6,12 @@
 \usage{
 eth_coinbase()
 }
+\value{
+A 20 byte (hexadecimal) Ethereum address.
+}
 \description{
 Returns the client coinbase address.
+}
+\examples{
+eth_coinbase()
 }

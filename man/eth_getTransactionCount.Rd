@@ -2,7 +2,7 @@
 % Please edit documentation in R/eth.R
 \name{eth_getTransactionCount}
 \alias{eth_getTransactionCount}
-\title{Title}
+\title{Returns the number of transactions sent from an address.}
 \usage{
 eth_getTransactionCount(address = NULL, block = "latest")
 }
@@ -11,6 +11,12 @@ eth_getTransactionCount(address = NULL, block = "latest")
 
 \item{block}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
 }
+\value{
+Integer.
+}
 \description{
-Title
+Returns the number of transactions sent from an address.
+}
+\examples{
+eth_getTransactionCount("0xD34DA389374CAAD1A048FBDC4569AAE33fD5a375")
 }

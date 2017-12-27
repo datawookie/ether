@@ -11,6 +11,13 @@ eth_getBlockByNumber(block = "latest", full = TRUE)
 
 \item{full}{Whether or not to return full transaction objects.}
 }
+\value{
+List.
+}
 \description{
 Returns information about a specified block.
+}
+\examples{
+eth_getBlockByNumber()
+eth_getBlockByNumber("0x4720FE")
 }

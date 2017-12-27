@@ -9,6 +9,12 @@ eth_getTransactionReceipt(hash)
 \arguments{
 \item{hash}{A transaction hash.}
 }
+\value{
+List.
+}
 \description{
 Returns the receipt of a transaction by transaction hash.
+}
+\examples{
+eth_getTransactionReceipt("0x194c67ef1a36990e1aefc7a7ed7855fc2b65c56b588c2ef69e58be2c492a57db")
 }

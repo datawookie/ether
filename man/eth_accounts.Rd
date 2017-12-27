@@ -6,6 +6,12 @@
 \usage{
 eth_accounts()
 }
+\value{
+A vector of 20 byte (hexadecimal) Ethereum address.
+}
 \description{
 Returns addresses owned by client.
+}
+\examples{
+eth_accounts()
 }

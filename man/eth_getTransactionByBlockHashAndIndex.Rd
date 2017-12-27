@@ -11,6 +11,13 @@ eth_getTransactionByBlockHashAndIndex(hash, index)
 
 \item{index}{Index of transaction in block.}
 }
+\value{
+List.
+}
 \description{
 Returns information about a transaction by block hash and transaction index position.
+}
+\examples{
+eth_getTransactionByBlockHashAndIndex("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0x0")
+eth_getTransactionByBlockHashAndIndex("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0xa3")
 }

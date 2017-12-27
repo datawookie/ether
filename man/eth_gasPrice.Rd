@@ -2,10 +2,16 @@
 % Please edit documentation in R/eth.R
 \name{eth_gasPrice}
 \alias{eth_gasPrice}
-\title{Returns the current price per gas in wei.}
+\title{Returns the current gas price in wei.}
 \usage{
 eth_gasPrice()
 }
+\value{
+Integer.
+}
 \description{
-Returns the current price per gas in wei.
+Returns the current gas price in wei.
+}
+\examples{
+eth_gasPrice()
 }

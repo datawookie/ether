@@ -11,6 +11,12 @@ eth_getBalance(address = NULL, block = "latest")
 
 \item{block}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
 }
+\value{
+Integer.
+}
 \description{
 Returns the balance of the account at specified address.
+}
+\examples{
+eth_getBalance()
 }

@@ -6,6 +6,12 @@
 \usage{
 eth_protocolVersion()
 }
+\value{
+Integer.
+}
 \description{
 Returns the current ethereum protocol version.
+}
+\examples{
+eth_protocolVersion()
 }

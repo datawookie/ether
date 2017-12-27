@@ -6,6 +6,12 @@
 \usage{
 eth_blockNumber()
 }
+\value{
+Integer.
+}
 \description{
 Returns the number of most recent block.
+}
+\examples{
+eth_blockNumber()
 }
