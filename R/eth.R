@@ -240,8 +240,34 @@ eth_getTransactionReceipt <- function(hash) {
   get_post_response("eth_getTransactionReceipt", list(hash))$result
 }
 
-# eth_getUncleByBlockHashAndIndex
-# eth_getUncleByBlockNumberAndIndex
+#' Returns information about a uncle of a block by hash and uncle index position.
+#'
+#' @param hash Hash of a block.
+#' @param index Index of transaction in block.
+#'
+#' @return List.
+#' @export
+#'
+#' @examples
+#' eth_getUncleByBlockHashAndIndex("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0x0")
+eth_getUncleByBlockHashAndIndex <- function(hash, index) {
+  get_post_response("eth_getUncleByBlockHashAndIndex", list(hash, index))$result
+}
+
+#' Returns information about a uncle of a block by number and uncle index position.
+#'
+#' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
+#' @param index Index of transaction in block.
+#'
+#' @return List.
+#' @export
+#'
+#' @examples
+#' eth_getUncleByBlockNumberAndIndex("0x4720fe", "0x0")
+eth_getUncleByBlockNumberAndIndex <- function(block, index) {
+  get_post_response("eth_getUncleByBlockNumberAndIndex", list(block, index))$result
+}
+
 # eth_newFilter
 # eth_newBlockFilter
 # eth_newPendingTransactionFilter
