@@ -8,7 +8,7 @@
 #' eth_protocolVersion()
 #' }
 eth_protocolVersion <- function() {
-  get_post_response("eth_protocolVersion")$result %>% strtoi()
+  get_post_response("eth_protocolVersion") %>% strtoi()
 }
 
 #' Returns an object with data about the sync status.
@@ -21,7 +21,7 @@ eth_protocolVersion <- function() {
 #' eth_syncing()
 #' }
 eth_syncing <- function() {
-  get_post_response("eth_syncing")$result
+  get_post_response("eth_syncing")
 }
 
 #' Returns the client coinbase address.
@@ -34,7 +34,7 @@ eth_syncing <- function() {
 #' eth_coinbase()
 #' }
 eth_coinbase <- function() {
-  get_post_response("eth_coinbase")$result
+  get_post_response("eth_coinbase")
 }
 
 #' Returns true if client is actively mining new blocks.
@@ -47,7 +47,7 @@ eth_coinbase <- function() {
 #' eth_mining()
 #' }
 eth_mining <- function() {
-  get_post_response("eth_mining")$result
+  get_post_response("eth_mining")
 }
 
 #' Returns the number of hashes per second that the node is mining with.
@@ -60,7 +60,7 @@ eth_mining <- function() {
 #' eth_hashrate()
 #' }
 eth_hashrate <- function() {
-  get_post_response("eth_hashrate")$result %>% strtoi()
+  get_post_response("eth_hashrate") %>% strtoi()
 }
 
 #' Returns the current gas price in wei.
@@ -73,7 +73,7 @@ eth_hashrate <- function() {
 #' eth_gasPrice()
 #' }
 eth_gasPrice <- function() {
-  get_post_response("eth_gasPrice")$result %>% mpfr(base = 16)
+  get_post_response("eth_gasPrice") %>% mpfr(base = 16)
 }
 
 #' Returns addresses owned by client.
@@ -86,7 +86,7 @@ eth_gasPrice <- function() {
 #' eth_accounts()
 #' }
 eth_accounts <- function() {
-  get_post_response("eth_accounts")$result %>% unlist()
+  get_post_response("eth_accounts") %>% unlist()
 }
 
 #' Returns the number of most recent block.
@@ -99,7 +99,7 @@ eth_accounts <- function() {
 #' eth_blockNumber()
 #' }
 eth_blockNumber <- function() {
-  get_post_response("eth_blockNumber")$result %>% strtoi()
+  get_post_response("eth_blockNumber") %>% strtoi()
 }
 
 #' Returns the balance (in Wei) of the account at specified address.
@@ -123,7 +123,7 @@ eth_getBalance <- function(address = NULL, block = "latest") {
     #
     if (is.null(address)) stop("Must specify address.")
   }
-  get_post_response("eth_getBalance", list(address, block))$result %>% mpfr(base = 16)
+  get_post_response("eth_getBalance", list(address, block)) %>% mpfr(base = 16)
 }
 
 #' Returns the value from a storage position at a given address.
@@ -140,7 +140,7 @@ eth_getBalance <- function(address = NULL, block = "latest") {
 #' eth_getStorageAt("0x3589d05a1ec4Af9f65b0E5554e645707775Ee43C", "0x0")
 #' }
 eth_getStorageAt <- function(address, position, block = "latest") {
-  get_post_response("eth_getStorageAt", list(address, position, block))$result
+  get_post_response("eth_getStorageAt", list(address, position, block))
 }
 
 #' Returns the number of transactions sent from an address.
@@ -157,7 +157,7 @@ eth_getStorageAt <- function(address, position, block = "latest") {
 #' }
 eth_getTransactionCount <- function(address = NULL, block = "latest") {
   if (is.null(address)) address = eth_coinbase()
-  get_post_response("eth_getTransactionCount", list(address, block))$result %>% strtoi()
+  get_post_response("eth_getTransactionCount", list(address, block)) %>% strtoi()
 }
 
 #' Returns the number of transactions in a block matching the given block hash.
@@ -172,7 +172,7 @@ eth_getTransactionCount <- function(address = NULL, block = "latest") {
 #' eth_getBlockTransactionCountByHash("0xb6d656ead4c3d4b1aa24d6b4d3d4cde8c090794e597258993512d650f088fcba")
 #' }
 eth_getBlockTransactionCountByHash <- function(hash) {
-  get_post_response("eth_getBlockTransactionCountByHash", list(hash))$result %>% strtoi()
+  get_post_response("eth_getBlockTransactionCountByHash", list(hash)) %>% strtoi()
 }
 
 #' Returns the number of transactions in a specified block.
@@ -188,7 +188,7 @@ eth_getBlockTransactionCountByHash <- function(hash) {
 #' eth_getBlockTransactionCountByNumber()
 #' }
 eth_getBlockTransactionCountByNumber <- function(block = "latest") {
-  get_post_response("eth_getBlockTransactionCountByNumber", list(block))$result %>% strtoi()
+  get_post_response("eth_getBlockTransactionCountByNumber", list(block)) %>% strtoi()
 }
 
 #' Returns the number of uncles in a block from a block matching the given block hash.
@@ -203,7 +203,7 @@ eth_getBlockTransactionCountByNumber <- function(block = "latest") {
 #' eth_getUncleCountByBlockHash("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79")
 #' }
 eth_getUncleCountByBlockHash <- function(hash) {
-  get_post_response("eth_getUncleCountByBlockHash", list(hash))$result %>% strtoi()
+  get_post_response("eth_getUncleCountByBlockHash", list(hash)) %>% strtoi()
 }
 
 #' Returns the number of uncles in a block from a block matching the given block number.
@@ -218,7 +218,7 @@ eth_getUncleCountByBlockHash <- function(hash) {
 #' eth_getUncleCountByBlockNumber("0x4720fe")
 #' }
 eth_getUncleCountByBlockNumber <- function(block) {
-  get_post_response("eth_getUncleCountByBlockNumber", list(block))$result %>% strtoi()
+  get_post_response("eth_getUncleCountByBlockNumber", list(block)) %>% strtoi()
 }
 
 #' Returns information about a specified block.
@@ -234,7 +234,7 @@ eth_getUncleCountByBlockNumber <- function(block) {
 #' eth_getBlockByHash("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79")
 #' }
 eth_getBlockByHash <- function(hash, full = TRUE) {
-  get_post_response("eth_getBlockByHash", list(hash, full))$result
+  get_post_response("eth_getBlockByHash", list(hash, full))
 }
 
 #' Returns information about a specified block.
@@ -251,7 +251,7 @@ eth_getBlockByHash <- function(hash, full = TRUE) {
 #' eth_getBlockByNumber("0x4720FE")
 #' }
 eth_getBlockByNumber <- function(block = "latest", full = TRUE) {
-  get_post_response("eth_getBlockByNumber", list(block, full))$result
+  get_post_response("eth_getBlockByNumber", list(block, full))
 }
 
 #' Returns the information about a transaction.
@@ -266,7 +266,7 @@ eth_getBlockByNumber <- function(block = "latest", full = TRUE) {
 #' eth_getTransactionByHash("0x194c67ef1a36990e1aefc7a7ed7855fc2b65c56b588c2ef69e58be2c492a57db")
 #' }
 eth_getTransactionByHash <- function(hash) {
-  get_post_response("eth_getTransactionByHash", list(hash))$result
+  get_post_response("eth_getTransactionByHash", list(hash))
 }
 
 #' Returns information about a transaction by block hash and transaction index position.
@@ -283,7 +283,7 @@ eth_getTransactionByHash <- function(hash) {
 #' eth_getTransactionByBlockHashAndIndex("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0xa3")
 #' }
 eth_getTransactionByBlockHashAndIndex <- function(hash, index) {
-  get_post_response("eth_getTransactionByBlockHashAndIndex", list(hash, index))$result
+  get_post_response("eth_getTransactionByBlockHashAndIndex", list(hash, index))
 }
 
 #' Returns information about a transaction by block number and transaction index position.
@@ -300,7 +300,7 @@ eth_getTransactionByBlockHashAndIndex <- function(hash, index) {
 #' eth_getTransactionByBlockNumberAndIndex("0x4720fe", "0xa3")
 #' }
 eth_getTransactionByBlockNumberAndIndex <- function(block, index) {
-  get_post_response("eth_getTransactionByBlockNumberAndIndex", list(block, index))$result
+  get_post_response("eth_getTransactionByBlockNumberAndIndex", list(block, index))
 }
 
 #' Returns the receipt of a transaction by transaction hash.
@@ -315,7 +315,7 @@ eth_getTransactionByBlockNumberAndIndex <- function(block, index) {
 #' eth_getTransactionReceipt("0x194c67ef1a36990e1aefc7a7ed7855fc2b65c56b588c2ef69e58be2c492a57db")
 #' }
 eth_getTransactionReceipt <- function(hash) {
-  get_post_response("eth_getTransactionReceipt", list(hash))$result
+  get_post_response("eth_getTransactionReceipt", list(hash))
 }
 
 #' Returns information about a uncle of a block by hash and uncle index position.
@@ -331,7 +331,7 @@ eth_getTransactionReceipt <- function(hash) {
 #' eth_getUncleByBlockHashAndIndex("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0x0")
 #' }
 eth_getUncleByBlockHashAndIndex <- function(hash, index) {
-  get_post_response("eth_getUncleByBlockHashAndIndex", list(hash, index))$result
+  get_post_response("eth_getUncleByBlockHashAndIndex", list(hash, index))
 }
 
 #' Returns information about a uncle of a block by number and uncle index position.
@@ -347,5 +347,5 @@ eth_getUncleByBlockHashAndIndex <- function(hash, index) {
 #' eth_getUncleByBlockNumberAndIndex("0x4720fe", "0x0")
 #' }
 eth_getUncleByBlockNumberAndIndex <- function(block, index) {
-  get_post_response("eth_getUncleByBlockNumberAndIndex", list(block, index))$result
+  get_post_response("eth_getUncleByBlockNumberAndIndex", list(block, index))
 }

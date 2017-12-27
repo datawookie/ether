@@ -18,5 +18,6 @@ get_post_response <- function(method, params = list()) {
   POST(url = ethereum_env$rpc_address,
              content_type_json(),
              body = body) %>%
-    content("parsed")
+    content("parsed") %>%
+    .$result
 }
