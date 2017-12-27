@@ -247,8 +247,6 @@ eth_getBlockByNumber <- function(block = "latest", full = TRUE) {
   get_post_response("eth_getBlockByNumber", list(block, full))$result
 }
 
-# eth_getTransactionByHash
-
 #' Returns the information about a transaction.
 #'
 #' @param hash A transaction hash.
@@ -281,7 +279,22 @@ eth_getTransactionByBlockHashAndIndex <- function(hash, index) {
   get_post_response("eth_getTransactionByBlockHashAndIndex", list(hash, index))$result
 }
 
-# eth_getTransactionByBlockNumberAndIndex
+#' Returns information about a transaction by block number and transaction index position.
+#'
+#' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
+#' @param index Index of transaction in block.
+#'
+#' @return List.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' eth_getTransactionByBlockNumberAndIndex("0x4720fe", "0x0")
+#' eth_getTransactionByBlockNumberAndIndex("0x4720fe", "0xa3")
+#' }
+eth_getTransactionByBlockNumberAndIndex <- function(block, index) {
+  get_post_response("eth_getTransactionByBlockNumberAndIndex", list(block, index))$result
+}
 
 #' Returns the receipt of a transaction by transaction hash.
 #'
