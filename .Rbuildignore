@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 ^\.travis\.yml$
 setup-key-for-test.R
+^README\.Rmd$
+^README-.*\.png$
