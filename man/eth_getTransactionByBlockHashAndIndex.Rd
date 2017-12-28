@@ -20,10 +20,10 @@ Returns information about a transaction by block hash and transaction index posi
 \examples{
 \dontrun{
 eth_getTransactionByBlockHashAndIndex(
-  "0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0x0"
+  "0xb6d656ead4c3d4b1aa24d6b4d3d4cde8c090794e597258993512d650f088fcba", "0x0"
 )
 eth_getTransactionByBlockHashAndIndex(
-  "0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0xa3"
+  "0xb6d656ead4c3d4b1aa24d6b4d3d4cde8c090794e597258993512d650f088fcba", "0x5"
 )
 }
 }

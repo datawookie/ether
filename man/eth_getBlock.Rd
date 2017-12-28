@@ -13,6 +13,9 @@ eth_getBlock(hash = NULL, number = "latest", full = TRUE)
 
 \item{full}{Whether or not to return full transaction objects.}
 }
+\value{
+List.
+}
 \description{
 Combines functionality from eth_getBlockByHash() and eth_getBlockByNumber().
 }

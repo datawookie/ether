@@ -17,6 +17,6 @@ Returns the receipt of a transaction by transaction hash.
 }
 \examples{
 \dontrun{
-eth_getTransactionReceipt("0x194c67ef1a36990e1aefc7a7ed7855fc2b65c56b588c2ef69e58be2c492a57db")
+eth_getTransactionReceipt("0x8fd9e04958cc4fb602b9d9fa5a9b6da512779ccd22477ccc5ce73721296cf151")
 }
 }

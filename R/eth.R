@@ -231,7 +231,7 @@ eth_getUncleCountByBlockNumber <- function(number) {
 #' @param number An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
 #' @param full Whether or not to return full transaction objects.
 #'
-#' @return
+#' @return List.
 #' @export
 #'
 #' @examples

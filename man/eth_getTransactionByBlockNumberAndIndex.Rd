@@ -19,7 +19,7 @@ Returns information about a transaction by block number and transaction index po
 }
 \examples{
 \dontrun{
-eth_getTransactionByBlockNumberAndIndex("0x4720fe", "0x0")
-eth_getTransactionByBlockNumberAndIndex("0x4720fe", "0xa3")
+eth_getTransactionByBlockNumberAndIndex("0x4720FF", "0x0")
+eth_getTransactionByBlockNumberAndIndex("0x4720FF", "0x5")
 }
 }

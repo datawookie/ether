@@ -2,7 +2,7 @@
 % Please edit documentation in R/eth.R
 \name{eth_getUncleByBlockHashAndIndex}
 \alias{eth_getUncleByBlockHashAndIndex}
-\title{Returns information about a uncle of a block by hash and uncle index position.}
+\title{Returns information about an uncle of a block by hash and uncle index position.}
 \usage{
 eth_getUncleByBlockHashAndIndex(hash, index)
 }
@@ -15,7 +15,7 @@ eth_getUncleByBlockHashAndIndex(hash, index)
 List.
 }
 \description{
-Returns information about a uncle of a block by hash and uncle index position.
+Returns information about an uncle of a block by hash and uncle index position.
 }
 \examples{
 \dontrun{
