@@ -19,6 +19,8 @@ Returns information about a uncle of a block by hash and uncle index position.
 }
 \examples{
 \dontrun{
-eth_getUncleByBlockHashAndIndex("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0x0")
+eth_getUncleByBlockHashAndIndex(
+  "0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0x0"
+)
 }
 }

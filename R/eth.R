@@ -169,7 +169,9 @@ eth_getTransactionCount <- function(address = NULL, block = "latest") {
 #'
 #' @examples
 #' \dontrun{
-#' eth_getBlockTransactionCountByHash("0xb6d656ead4c3d4b1aa24d6b4d3d4cde8c090794e597258993512d650f088fcba")
+#' eth_getBlockTransactionCountByHash(
+#'   "0xb6d656ead4c3d4b1aa24d6b4d3d4cde8c090794e597258993512d650f088fcba"
+#' )
 #' }
 eth_getBlockTransactionCountByHash <- function(hash) {
   get_post_response("eth_getBlockTransactionCountByHash", list(hash)) %>% hex_to_number()
@@ -279,8 +281,12 @@ eth_getTransactionByHash <- function(hash) {
 #'
 #' @examples
 #' \dontrun{
-#' eth_getTransactionByBlockHashAndIndex("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0x0")
-#' eth_getTransactionByBlockHashAndIndex("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0xa3")
+#' eth_getTransactionByBlockHashAndIndex(
+#'   "0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0x0"
+#' )
+#' eth_getTransactionByBlockHashAndIndex(
+#'   "0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0xa3"
+#' )
 #' }
 eth_getTransactionByBlockHashAndIndex <- function(hash, index) {
   get_post_response("eth_getTransactionByBlockHashAndIndex", list(hash, index))
@@ -328,7 +334,9 @@ eth_getTransactionReceipt <- function(hash) {
 #'
 #' @examples
 #' \dontrun{
-#' eth_getUncleByBlockHashAndIndex("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0x0")
+#' eth_getUncleByBlockHashAndIndex(
+#'   "0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0x0"
+#' )
 #' }
 eth_getUncleByBlockHashAndIndex <- function(hash, index) {
   get_post_response("eth_getUncleByBlockHashAndIndex", list(hash, index))
