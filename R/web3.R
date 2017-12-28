@@ -13,6 +13,8 @@ web3_clientVersion <- function() {
 
 #' Returns Keccak-256 (not the standardized SHA3-256) of the given data.
 #'
+#' @param data Data encoded as hex.
+#'
 #' @return String.
 #' @export
 #'

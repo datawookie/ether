@@ -6,6 +6,9 @@
 \usage{
 web3_sha3(data)
 }
+\arguments{
+\item{data}{Data encoded as hex.}
+}
 \value{
 String.
 }
