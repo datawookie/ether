@@ -4,10 +4,10 @@
 \alias{eth_getUncleByBlockNumberAndIndex}
 \title{Returns information about a uncle of a block by number and uncle index position.}
 \usage{
-eth_getUncleByBlockNumberAndIndex(block, index)
+eth_getUncleByBlockNumberAndIndex(number, index)
 }
 \arguments{
-\item{block}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
+\item{number}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
 
 \item{index}{Index of transaction in block.}
 }

@@ -7,7 +7,7 @@
 eth_accounts()
 }
 \value{
-A vector of 20 byte (hexadecimal) Ethereum address.
+A vector of 20 byte (hexadecimal) Ethereum addresses.
 }
 \description{
 Returns addresses owned by client.

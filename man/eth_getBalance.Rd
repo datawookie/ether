@@ -4,12 +4,12 @@
 \alias{eth_getBalance}
 \title{Returns the balance (in Wei) of the account at specified address.}
 \usage{
-eth_getBalance(address = NULL, block = "latest")
+eth_getBalance(address = NULL, number = "latest")
 }
 \arguments{
 \item{address}{A 20 byte (hexadecimal) Ethereum address.}
 
-\item{block}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
+\item{number}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
 }
 \value{
 Integer.

@@ -1,6 +1,6 @@
 #' @importFrom magrittr %>%
 #' @name %>%
-#' @importFrom dplyr bind_rows
+#' @import dplyr
 #' @importFrom Rmpfr mpfr
 #' @importFrom jsonlite toJSON
 #' @importFrom httr POST

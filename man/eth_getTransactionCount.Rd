@@ -4,12 +4,12 @@
 \alias{eth_getTransactionCount}
 \title{Returns the number of transactions sent from an address.}
 \usage{
-eth_getTransactionCount(address = NULL, block = "latest")
+eth_getTransactionCount(address = NULL, number = "latest")
 }
 \arguments{
 \item{address}{A 20 byte (hexadecimal) Ethereum address.}
 
-\item{block}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
+\item{number}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
 }
 \value{
 Integer.

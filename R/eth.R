@@ -78,7 +78,7 @@ eth_gasPrice <- function() {
 
 #' Returns addresses owned by client.
 #'
-#' @return A vector of 20 byte (hexadecimal) Ethereum address.
+#' @return A vector of 20 byte (hexadecimal) Ethereum addresses.
 #' @export
 #'
 #' @examples
@@ -105,7 +105,7 @@ eth_blockNumber <- function() {
 #' Returns the balance (in Wei) of the account at specified address.
 #'
 #' @param address A 20 byte (hexadecimal) Ethereum address.
-#' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
+#' @param number An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
 #'
 #' @return Integer.
 #' @export
@@ -115,7 +115,7 @@ eth_blockNumber <- function() {
 #' eth_getBalance()
 #' eth_getBalance("0xD34DA389374CAAD1A048FBDC4569AAE33fD5a375")
 #' }
-eth_getBalance <- function(address = NULL, block = "latest") {
+eth_getBalance <- function(address = NULL, number = "latest") {
   if (is.null(address)) {
     address = eth_coinbase()
     #
@@ -123,14 +123,14 @@ eth_getBalance <- function(address = NULL, block = "latest") {
     #
     if (is.null(address)) stop("Must specify address.")
   }
-  get_post_response("eth_getBalance", list(address, block)) %>% mpfr(base = 16)
+  get_post_response("eth_getBalance", list(address, number)) %>% mpfr(base = 16)
 }
 
 #' Returns the value from a storage position at a given address.
 #'
 #' @param address A 20 byte (hexadecimal) Ethereum address.
 #' @param position Position in the storage.
-#' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
+#' @param number An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
 #'
 #' @return Hex string.
 #' @export
@@ -139,14 +139,14 @@ eth_getBalance <- function(address = NULL, block = "latest") {
 #' \dontrun{
 #' eth_getStorageAt("0x3589d05a1ec4Af9f65b0E5554e645707775Ee43C", "0x0")
 #' }
-eth_getStorageAt <- function(address, position, block = "latest") {
-  get_post_response("eth_getStorageAt", list(address, position, block))
+eth_getStorageAt <- function(address, position, number = "latest") {
+  get_post_response("eth_getStorageAt", list(address, position, number))
 }
 
 #' Returns the number of transactions sent from an address.
 #'
 #' @param address A 20 byte (hexadecimal) Ethereum address.
-#' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
+#' @param number An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
 #'
 #' @return Integer.
 #' @export
@@ -155,9 +155,9 @@ eth_getStorageAt <- function(address, position, block = "latest") {
 #' \dontrun{
 #' eth_getTransactionCount("0xD34DA389374CAAD1A048FBDC4569AAE33fD5a375")
 #' }
-eth_getTransactionCount <- function(address = NULL, block = "latest") {
+eth_getTransactionCount <- function(address = NULL, number = "latest") {
   if (is.null(address)) address = eth_coinbase()
-  get_post_response("eth_getTransactionCount", list(address, block)) %>% hex_to_number()
+  get_post_response("eth_getTransactionCount", list(address, number)) %>% hex_to_number()
 }
 
 #' Returns the number of transactions in a block matching the given block hash.
@@ -179,7 +179,7 @@ eth_getBlockTransactionCountByHash <- function(hash) {
 
 #' Returns the number of transactions in a specified block.
 #'
-#' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
+#' @param number An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
 #'
 #' @return Integer.
 #' @export
@@ -189,8 +189,8 @@ eth_getBlockTransactionCountByHash <- function(hash) {
 #' eth_getBlockTransactionCountByNumber("0x4720FF")
 #' eth_getBlockTransactionCountByNumber()
 #' }
-eth_getBlockTransactionCountByNumber <- function(block = "latest") {
-  get_post_response("eth_getBlockTransactionCountByNumber", list(block)) %>% hex_to_number()
+eth_getBlockTransactionCountByNumber <- function(number = "latest") {
+  get_post_response("eth_getBlockTransactionCountByNumber", list(number)) %>% hex_to_number()
 }
 
 #' Returns the number of uncles in a block from a block matching the given block hash.
@@ -210,7 +210,7 @@ eth_getUncleCountByBlockHash <- function(hash) {
 
 #' Returns the number of uncles in a block from a block matching the given block number.
 #'
-#' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
+#' @param number An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
 #'
 #' @return Integer.
 #' @export
@@ -219,41 +219,44 @@ eth_getUncleCountByBlockHash <- function(hash) {
 #' \dontrun{
 #' eth_getUncleCountByBlockNumber("0x4720fe")
 #' }
-eth_getUncleCountByBlockNumber <- function(block) {
-  get_post_response("eth_getUncleCountByBlockNumber", list(block)) %>% hex_to_number()
+eth_getUncleCountByBlockNumber <- function(number) {
+  get_post_response("eth_getUncleCountByBlockNumber", list(number)) %>% hex_to_number()
 }
 
 #' Returns information about a specified block.
+#'
+#' Combines functionality from eth_getBlockByHash() and eth_getBlockByNumber().
 #'
 #' @param hash Hash of a block.
+#' @param number An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
 #' @param full Whether or not to return full transaction objects.
 #'
-#' @return List.
+#' @return
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' eth_getBlockByHash("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79")
-#' }
-eth_getBlockByHash <- function(hash, full = TRUE) {
-  get_post_response("eth_getBlockByHash", list(hash, full))
-}
+#' eth_getBlock()
+#' eth_getBlock("0xb6d656ead4c3d4b1aa24d6b4d3d4cde8c090794e597258993512d650f088fcba")
+#' eth_getBlock("0x4720FF")
+eth_getBlock <- function(hash = NULL, number = "latest", full = TRUE) {
+  if (!is.null(hash))
+    block <- get_post_response("eth_getBlockByHash", list(hash, full))
+  else
+    block <- get_post_response("eth_getBlockByNumber", list(number, full))
 
-#' Returns information about a specified block.
-#'
-#' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
-#' @param full Whether or not to return full transaction objects.
-#'
-#' @return List.
-#' @export
-#'
-#' @examples
-#' \dontrun{
-#' eth_getBlockByNumber()
-#' eth_getBlockByNumber("0x4720FE")
-#' }
-eth_getBlockByNumber <- function(block = "latest", full = TRUE) {
-  get_post_response("eth_getBlockByNumber", list(block, full))
+  block$timestamp <- as.POSIXct(hex_to_number(block$timestamp), origin = "1970-01-01", tz = "UTC")
+
+  block$transactions <- lapply(block$transactions, function(transaction) {
+    # The presence of NULL breaks bind_rows().
+    if (is.null(transaction$to)) transaction$to <- NA
+    transaction
+  }) %>% bind_rows() %>%
+    select(
+      index = transactionIndex,
+      everything()
+    )
+
+  block
 }
 
 #' Returns the information about a transaction.
@@ -265,7 +268,8 @@ eth_getBlockByNumber <- function(block = "latest", full = TRUE) {
 #'
 #' @examples
 #' \dontrun{
-#' eth_getTransactionByHash("0x194c67ef1a36990e1aefc7a7ed7855fc2b65c56b588c2ef69e58be2c492a57db")
+#' eth_getTransactionByHash("0x4b0f317c326299a4d063ccccff2daf7452c35dc7ec5b4279f001d6e2f745cc6f")
+#' eth_getTransactionByHash("0x8fd9e04958cc4fb602b9d9fa5a9b6da512779ccd22477ccc5ce73721296cf151")
 #' }
 eth_getTransactionByHash <- function(hash) {
   get_post_response("eth_getTransactionByHash", list(hash))
@@ -282,10 +286,10 @@ eth_getTransactionByHash <- function(hash) {
 #' @examples
 #' \dontrun{
 #' eth_getTransactionByBlockHashAndIndex(
-#'   "0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0x0"
+#'   "0xb6d656ead4c3d4b1aa24d6b4d3d4cde8c090794e597258993512d650f088fcba", "0x0"
 #' )
 #' eth_getTransactionByBlockHashAndIndex(
-#'   "0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79", "0xa3"
+#'   "0xb6d656ead4c3d4b1aa24d6b4d3d4cde8c090794e597258993512d650f088fcba", "0x5"
 #' )
 #' }
 eth_getTransactionByBlockHashAndIndex <- function(hash, index) {
@@ -294,7 +298,7 @@ eth_getTransactionByBlockHashAndIndex <- function(hash, index) {
 
 #' Returns information about a transaction by block number and transaction index position.
 #'
-#' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
+#' @param number An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
 #' @param index Index of transaction in block.
 #'
 #' @return List.
@@ -302,11 +306,11 @@ eth_getTransactionByBlockHashAndIndex <- function(hash, index) {
 #'
 #' @examples
 #' \dontrun{
-#' eth_getTransactionByBlockNumberAndIndex("0x4720fe", "0x0")
-#' eth_getTransactionByBlockNumberAndIndex("0x4720fe", "0xa3")
+#' eth_getTransactionByBlockNumberAndIndex("0x4720FF", "0x0")
+#' eth_getTransactionByBlockNumberAndIndex("0x4720FF", "0x5")
 #' }
-eth_getTransactionByBlockNumberAndIndex <- function(block, index) {
-  get_post_response("eth_getTransactionByBlockNumberAndIndex", list(block, index))
+eth_getTransactionByBlockNumberAndIndex <- function(number, index) {
+  get_post_response("eth_getTransactionByBlockNumberAndIndex", list(number, index))
 }
 
 #' Returns the receipt of a transaction by transaction hash.
@@ -318,13 +322,13 @@ eth_getTransactionByBlockNumberAndIndex <- function(block, index) {
 #'
 #' @examples
 #' \dontrun{
-#' eth_getTransactionReceipt("0x194c67ef1a36990e1aefc7a7ed7855fc2b65c56b588c2ef69e58be2c492a57db")
+#' eth_getTransactionReceipt("0x8fd9e04958cc4fb602b9d9fa5a9b6da512779ccd22477ccc5ce73721296cf151")
 #' }
 eth_getTransactionReceipt <- function(hash) {
   get_post_response("eth_getTransactionReceipt", list(hash))
 }
 
-#' Returns information about a uncle of a block by hash and uncle index position.
+#' Returns information about an uncle of a block by hash and uncle index position.
 #'
 #' @param hash Hash of a block.
 #' @param index Index of transaction in block.
@@ -344,7 +348,7 @@ eth_getUncleByBlockHashAndIndex <- function(hash, index) {
 
 #' Returns information about a uncle of a block by number and uncle index position.
 #'
-#' @param block An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
+#' @param number An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".
 #' @param index Index of transaction in block.
 #'
 #' @return List.
@@ -354,6 +358,6 @@ eth_getUncleByBlockHashAndIndex <- function(hash, index) {
 #' \dontrun{
 #' eth_getUncleByBlockNumberAndIndex("0x4720fe", "0x0")
 #' }
-eth_getUncleByBlockNumberAndIndex <- function(block, index) {
-  get_post_response("eth_getUncleByBlockNumberAndIndex", list(block, index))
+eth_getUncleByBlockNumberAndIndex <- function(number, index) {
+  get_post_response("eth_getUncleByBlockNumberAndIndex", list(number, index))
 }

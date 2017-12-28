@@ -4,10 +4,10 @@
 \alias{eth_getTransactionByBlockNumberAndIndex}
 \title{Returns information about a transaction by block number and transaction index position.}
 \usage{
-eth_getTransactionByBlockNumberAndIndex(block, index)
+eth_getTransactionByBlockNumberAndIndex(number, index)
 }
 \arguments{
-\item{block}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
+\item{number}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
 
 \item{index}{Index of transaction in block.}
 }

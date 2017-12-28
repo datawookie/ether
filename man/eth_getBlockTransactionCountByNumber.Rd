@@ -4,10 +4,10 @@
 \alias{eth_getBlockTransactionCountByNumber}
 \title{Returns the number of transactions in a specified block.}
 \usage{
-eth_getBlockTransactionCountByNumber(block = "latest")
+eth_getBlockTransactionCountByNumber(number = "latest")
 }
 \arguments{
-\item{block}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
+\item{number}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
 }
 \value{
 Integer.

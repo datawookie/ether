@@ -4,14 +4,14 @@
 \alias{eth_getStorageAt}
 \title{Returns the value from a storage position at a given address.}
 \usage{
-eth_getStorageAt(address, position, block = "latest")
+eth_getStorageAt(address, position, number = "latest")
 }
 \arguments{
 \item{address}{A 20 byte (hexadecimal) Ethereum address.}
 
 \item{position}{Position in the storage.}
 
-\item{block}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
+\item{number}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
 }
 \value{
 Hex string.

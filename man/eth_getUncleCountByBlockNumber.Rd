@@ -4,10 +4,10 @@
 \alias{eth_getUncleCountByBlockNumber}
 \title{Returns the number of uncles in a block from a block matching the given block number.}
 \usage{
-eth_getUncleCountByBlockNumber(block)
+eth_getUncleCountByBlockNumber(number)
 }
 \arguments{
-\item{block}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
+\item{number}{An integer block number (as a hexidecimal string) or one of "earliest", "latest" or "pending".}
 }
 \value{
 Integer.
