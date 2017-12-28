@@ -253,8 +253,8 @@ eth_getBlock <- function(hash = NULL, number = "latest", full = TRUE) {
     if (is.null(transaction$to)) transaction$to <- NA
     transaction
   }) %>% bind_rows() %>%
-    select(
-      index = transactionIndex,
+    select_(
+      index = "transactionIndex",
       everything()
     )
 
