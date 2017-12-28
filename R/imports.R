@@ -1,5 +1,3 @@
-#' @importFrom magrittr %>%
-#' @name %>%
 #' @import dplyr
 #' @importFrom Rmpfr mpfr
 #' @importFrom jsonlite toJSON
