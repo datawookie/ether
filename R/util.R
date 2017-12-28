@@ -18,3 +18,16 @@ hex_to_number <- function(hex, integer = TRUE) {
 number_to_hex <- function(number) {
   sprintf("0x%x", number)
 }
+
+#' @export
+as.kwei   <- function(wei) wei / 1000
+#' @export
+as.mwei   <- function(wei) wei / 1000000
+#' @export
+as.gwei   <- function(wei) wei / 1000000000
+#' @export
+as.szabo  <- function(wei) wei / 1000000000000
+#' @export
+as.finney <- function(wei) wei / 1000000000000000
+#' @export
+as.ether  <- function(wei) wei / 1000000000000000000
