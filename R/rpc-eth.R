@@ -252,11 +252,9 @@ eth_getBlock <- function(hash = NULL, number = "latest", full = TRUE) {
     # The presence of NULL breaks bind_rows().
     if (is.null(transaction$to)) transaction$to <- NA
     transaction
-  }) %>% bind_rows() %>%
-    select_(
-      index = "transactionIndex",
-      everything()
-    )
+  }) %>%
+    bind_rows() %>%
+    rename_(index = "transactionIndex")
 
   block
 }
