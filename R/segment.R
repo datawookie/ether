@@ -31,6 +31,9 @@ get_blocks <- function(start = NULL, stop = NULL, count = NULL) {
     eth_getBlock(number = number_to_hex(number))
   })
 
+  # There must be a simpler way to convert these to list columns, but for the moment I create a data frame without
+  # those columns and then add them back in afterwards.
+  #
   lapply(blocks, function(block) {
     block$transactions <- NULL
     block$uncles <- NULL
