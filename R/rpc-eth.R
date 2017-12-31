@@ -238,7 +238,8 @@ eth_getUncleCountByBlockNumber <- function(number) {
 #' \dontrun{
 #' eth_getBlock()
 #' eth_getBlock("0xb6d656ead4c3d4b1aa24d6b4d3d4cde8c090794e597258993512d650f088fcba")
-#' eth_getBlock("0x4720FF")
+#' eth_getBlock(number = "0x4720FF")
+#' eth_getBlock(number = "0x49a8ea") # A block with two uncles.
 #' }
 eth_getBlock <- function(hash = NULL, number = "latest", full = TRUE) {
   if (!is.null(hash))
@@ -246,15 +247,25 @@ eth_getBlock <- function(hash = NULL, number = "latest", full = TRUE) {
   else
     block <- get_post_response("eth_getBlockByNumber", list(number, full))
 
-  block$timestamp <- as.POSIXct(hex_to_number(block$timestamp), origin = "1970-01-01", tz = "UTC")
+  block$timestamp <- hex_to_number(block$timestamp)
+  #
+  if (!block$timestamp) {
+    block$timestamp <- NA
+  } else {
+    block$timestamp <- as.POSIXct(block$timestamp, origin = "1970-01-01", tz = "UTC")
+  }
 
-  block$transactions <- lapply(block$transactions, function(transaction) {
-    # The presence of NULL breaks bind_rows().
-    if (is.null(transaction$to)) transaction$to <- NA
-    transaction
-  }) %>%
-    bind_rows() %>%
-    rename_(index = "transactionIndex")
+  if (length(block$transactions)) {
+    block$transactions <- lapply(block$transactions, function(transaction) {
+      # The presence of NULL breaks bind_rows().
+      if (is.null(transaction$to)) transaction$to <- NA
+      transaction
+    }) %>%
+      bind_rows() %>%
+      rename_(index = "transactionIndex")
+  } else {
+    block$transactions = NA
+  }
 
   block
 }
