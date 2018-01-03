@@ -65,7 +65,6 @@ get_blocks <- function(start = NULL, stop = NULL, count = NULL) {
 #' get_transactions("0x4720FF", count = 5)
 #' }
 get_transactions <- function(start = NULL, stop = NULL, count = NULL) {
-  get_blocks(start, stop, count) %>%
-    pull(transactions) %>%
+  get_blocks(start, stop, count)$transactions %>%
     bind_rows()
 }
