@@ -1,9 +1,11 @@
 Package: ethereum
 Type: Package
-Title: Interfaces with the Ethereum Blockchain
-Version: 0.1.0
+Title: Interaction with the Ethereum Blockchain
+Version: 0.1.2
 Authors@R: person("Andrew", "Collier", email = "andrew@exegetic.biz", role = c("aut", "cre"))
-Description: Function wrappers for various RPC calls.
+Description: Ethereum (<https://www.ethereum.org/>) is an open-source, public blockchain.
+    It provides a distributed computing platform via smart contracts. This package provides
+    functions which interrogate blocks and transactions in the Ethereum blockchain.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
@@ -11,7 +13,6 @@ Imports:
     dplyr,
     httr,
     jsonlite,
-    magrittr,
     Rmpfr
 RoxygenNote: 6.0.1
 Suggests: testthat
