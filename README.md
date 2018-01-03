@@ -28,7 +28,7 @@ Load the package.
 library(ethereum)
 ```
 
-You'll need to connect to an Ethereum node exposing a RPC interface. By default the package will attempt to connect to a local node using <http://localhost:8545>. However you can also make use of the public RPC nodes hosted by [infura.io](https://infura.io/). Assuming that you have created an infura.io API key and stored it in the `INFURA_MAINNET_KEY` environment variable.
+You'll need to connect to an Ethereum node exposing a RPC interface. By default the package will attempt to connect to a node on `localhost` using port 8545. However, you can also make use of the public RPC nodes hosted by [infura.io](https://infura.io/). Assuming that you have created an infura.io API key and stored it in the `INFURA_MAINNET_KEY` environment variable.
 
 ``` r
 set_rpc_address("https://mainnet.infura.io/", key = Sys.getenv("INFURA_MAINNET_KEY"))
@@ -38,13 +38,13 @@ Once you've configured the connection to RPC you are ready to interact with the 
 
 ``` r
 eth_blockNumber()
-#> [1] 4805399
+#> [1] 4847023
 ```
 
 ``` r
 eth_gasPrice()
 #> 1 'mpfr' number of precision  36   bits 
-#> [1] 20000000000
+#> [1] 21000000000
 ```
 
 ``` r
