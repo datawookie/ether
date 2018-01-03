@@ -1,5 +1,3 @@
-library(ethereum)
-
 set_rpc_address("https://mainnet.infura.io/", key = Sys.getenv("INFURA_MAINNET_KEY"))
 
 context("eth")

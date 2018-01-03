@@ -1,4 +1,4 @@
 library(testthat)
-library(ethereum)
+library(ether)
 
-test_check("ethereum")
+test_check("ether")
