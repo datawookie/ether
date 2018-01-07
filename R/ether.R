@@ -3,7 +3,7 @@
 #' The ethereum package provides an interface to the Ethereum RPC functions.
 #'
 #' @docType package
-#' @name ethereum
+#' @name ether
 #'
 #' @import dplyr
 #' @importFrom Rmpfr mpfr
