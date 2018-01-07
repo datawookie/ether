@@ -1,11 +1,11 @@
 Package: ether
 Type: Package
-Title: Interaction with the Ethereum Blockchain
-Version: 0.1.3
+Title: Interaction with the 'Ethereum' Blockchain
+Version: 0.1.4
 Authors@R: person("Andrew", "Collier", email = "andrew@exegetic.biz", role = c("aut", "cre"))
 Description: Interacts with the open-source, public 'Ethereum' <https://www.ethereum.org/> blockchain.
     It provides a distributed computing platform via smart contracts. This package provides
-    functions which interrogate blocks and transactions in the Ethereum blockchain.
+    functions which interrogate blocks and transactions in the 'Ethereum' blockchain.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
