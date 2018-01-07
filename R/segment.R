@@ -14,8 +14,8 @@
 #' get_blocks("0x49a8ea", count = 5) # Two blocks containing uncles.
 #' }
 get_blocks <- function(start = NULL, stop = NULL, count = NULL) {
-  if (!is.null(start)) start <- hex_to_number(start)
-  if (!is.null(stop)) stop <- hex_to_number(stop)
+  if (!is.null(start)) start <- hex_to_dec(start)
+  if (!is.null(stop)) stop <- hex_to_dec(stop)
   #
   if (!is.null(start) && !is.null(stop)) {
     numbers = seq(start, stop)
@@ -28,7 +28,7 @@ get_blocks <- function(start = NULL, stop = NULL, count = NULL) {
   message("Downloading ", length(numbers), " blocks.")
   #
   blocks = lapply(numbers, function(number) {
-    eth_getBlock(number = number_to_hex(number))
+    eth_getBlock(number = dec_to_hex(number))
   })
 
   # There must be a simpler way to convert these to list columns, but for the moment I create a data frame without

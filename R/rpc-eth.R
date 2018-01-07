@@ -8,7 +8,7 @@
 #' eth_protocolVersion()
 #' }
 eth_protocolVersion <- function() {
-  get_post_response("eth_protocolVersion") %>% hex_to_number()
+  get_post_response("eth_protocolVersion") %>% hex_to_dec()
 }
 
 #' Returns an object with data about the sync status.
@@ -60,7 +60,7 @@ eth_mining <- function() {
 #' eth_hashrate()
 #' }
 eth_hashrate <- function() {
-  get_post_response("eth_hashrate") %>% hex_to_number()
+  get_post_response("eth_hashrate") %>% hex_to_dec()
 }
 
 #' Returns the current gas price in wei.
@@ -99,7 +99,7 @@ eth_accounts <- function() {
 #' eth_blockNumber()
 #' }
 eth_blockNumber <- function() {
-  get_post_response("eth_blockNumber") %>% hex_to_number()
+  get_post_response("eth_blockNumber") %>% hex_to_dec()
 }
 
 #' Returns the balance (in Wei) of the account at specified address.
@@ -157,7 +157,7 @@ eth_getStorageAt <- function(address, position, number = "latest") {
 #' }
 eth_getTransactionCount <- function(address = NULL, number = "latest") {
   if (is.null(address)) address = eth_coinbase()
-  get_post_response("eth_getTransactionCount", list(address, number)) %>% hex_to_number()
+  get_post_response("eth_getTransactionCount", list(address, number)) %>% hex_to_dec()
 }
 
 #' Returns the number of transactions in a block matching the given block hash.
@@ -174,7 +174,7 @@ eth_getTransactionCount <- function(address = NULL, number = "latest") {
 #' )
 #' }
 eth_getBlockTransactionCountByHash <- function(hash) {
-  get_post_response("eth_getBlockTransactionCountByHash", list(hash)) %>% hex_to_number()
+  get_post_response("eth_getBlockTransactionCountByHash", list(hash)) %>% hex_to_dec()
 }
 
 #' Returns the number of transactions in a specified block.
@@ -190,7 +190,7 @@ eth_getBlockTransactionCountByHash <- function(hash) {
 #' eth_getBlockTransactionCountByNumber()
 #' }
 eth_getBlockTransactionCountByNumber <- function(number = "latest") {
-  get_post_response("eth_getBlockTransactionCountByNumber", list(number)) %>% hex_to_number()
+  get_post_response("eth_getBlockTransactionCountByNumber", list(number)) %>% hex_to_dec()
 }
 
 #' Returns the number of uncles in a block from a block matching the given block hash.
@@ -205,7 +205,7 @@ eth_getBlockTransactionCountByNumber <- function(number = "latest") {
 #' eth_getUncleCountByBlockHash("0x8575df1eb3df61f3880628ca8e495038ee0b278c0aa48fe41f80b8d0d4e83e79")
 #' }
 eth_getUncleCountByBlockHash <- function(hash) {
-  get_post_response("eth_getUncleCountByBlockHash", list(hash)) %>% hex_to_number()
+  get_post_response("eth_getUncleCountByBlockHash", list(hash)) %>% hex_to_dec()
 }
 
 #' Returns the number of uncles in a block from a block matching the given block number.
@@ -220,7 +220,7 @@ eth_getUncleCountByBlockHash <- function(hash) {
 #' eth_getUncleCountByBlockNumber("0x4720fe")
 #' }
 eth_getUncleCountByBlockNumber <- function(number) {
-  get_post_response("eth_getUncleCountByBlockNumber", list(number)) %>% hex_to_number()
+  get_post_response("eth_getUncleCountByBlockNumber", list(number)) %>% hex_to_dec()
 }
 
 #' Returns information about a specified block.
@@ -247,7 +247,7 @@ eth_getBlock <- function(hash = NULL, number = "latest", full = TRUE) {
   else
     block <- get_post_response("eth_getBlockByNumber", list(number, full))
 
-  block$timestamp <- hex_to_number(block$timestamp)
+  block$timestamp <- hex_to_dec(block$timestamp)
   #
   if (!block$timestamp) {
     block$timestamp <- NA
