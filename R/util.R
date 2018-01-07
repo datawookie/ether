@@ -20,7 +20,7 @@ hex_to_dec <- function(hex, integer = TRUE) {
                      class(hex) <- "numeric"
                      as.numeric(sprintf("%.0f", hex))
                    },
-                   dec)
+                   dec)[[1]]
   #
   dec
 }
