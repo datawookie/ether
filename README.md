@@ -1,23 +1,25 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-ethereum
-========
+ether
+=====
 
-[![Travis-CI Build Status](https://travis-ci.org/DataWookie/ethereum.svg?branch=master)](https://travis-ci.org/DataWookie/ethereum)
+[![Travis-CI Build Status](https://travis-ci.org/DataWookie/ether.svg?branch=master)](https://travis-ci.org/DataWookie/ether)
 
-The `ethereum` package provides functions for interacting with the Ethereum network.
+The `ether` package provides functions for interacting with the Ethereum network.
 
 The details of the RPC interface along with `curl` examples of interacting with it are documented in the [JSON RPC page](https://github.com/ethereum/wiki/wiki/JSON-RPC) on the Ethereum Wiki.
 
 Installation
 ------------
 
-You can install ethereum from github with:
+Install from GitHub using
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("DataWookie/ethereum")
+devtools::install_github("DataWookie/ether")
 ```
+
+Alternatively there is a stable version listed on CRAN.
 
 Example
 -------
@@ -25,7 +27,7 @@ Example
 Load the package.
 
 ``` r
-library(ethereum)
+library(ether)
 ```
 
 You'll need to connect to an Ethereum node exposing a RPC interface. By default the package will attempt to connect to a node on `localhost` using port 8545. However, you can also make use of the public RPC nodes hosted by [infura.io](https://infura.io/). Assuming that you have created an infura.io API key and stored it in the `INFURA_MAINNET_KEY` environment variable.
@@ -38,13 +40,13 @@ Once you've configured the connection to RPC you are ready to interact with the 
 
 ``` r
 eth_blockNumber()
-#> [1] 4847023
+#> [1] 4867006
 ```
 
 ``` r
 eth_gasPrice()
-#> 1 'mpfr' number of precision  36   bits 
-#> [1] 21000000000
+#> 1 'mpfr' number of precision  40   bits 
+#> [1] 100000000000
 ```
 
 ``` r
