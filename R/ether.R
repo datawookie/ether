@@ -1,6 +1,6 @@
-#' ethereum: An R package for working with Ethereum.
+#' ether: An R package for working with Ethereum.
 #'
-#' The ethereum package provides an interface to the Ethereum RPC functions.
+#' The ether package provides an interface to the Ethereum RPC functions.
 #'
 #' @docType package
 #' @name ether
