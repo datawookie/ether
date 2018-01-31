@@ -13,18 +13,25 @@ hex_to_dec <- function(hex, integer = TRUE) {
   #
   dec <- strtoi(hex)
   #
-  dec <- ifelse(is.na(dec),
-                   if (integer) {
-                     mpfr(hex, base = 16)
-                   } else {
-                     class(hex) <- "numeric"
-                     as.numeric(sprintf("%.0f", hex))
-                   },
-                   dec)[[1]]
-  #
-  dec
+  ifelse(is.na(dec),
+         if (integer) {
+           mpfr(hex, base = 16)
+         } else {
+           class(hex) <- "numeric"
+           as.numeric(sprintf("%.0f", hex))
+         },
+         dec)[[1]]
 }
 
+#' Convert decimal to hexadecimal.
+#'
+#' @param dec Decimal number.
+#'
+#' @return String.
+#' @export
+#'
+#' @examples
+#' dec_to_hex(21106)
 dec_to_hex <- function(dec) {
   sprintf("0x%x", dec)
 }
