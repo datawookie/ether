@@ -1,7 +1,7 @@
 Package: ether
 Type: Package
 Title: Interaction with the 'Ethereum' Blockchain
-Version: 0.1.4
+Version: 0.1.5
 Authors@R: person("Andrew", "Collier", email = "andrew@exegetic.biz", role = c("aut", "cre"))
 Description: Interacts with the open-source, public 'Ethereum' <https://www.ethereum.org/> blockchain.
     It provides a distributed computing platform via smart contracts. This package provides
