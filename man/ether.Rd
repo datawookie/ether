@@ -4,7 +4,7 @@
 \name{ether}
 \alias{ether}
 \alias{ether-package}
-\title{ethereum: An R package for working with Ethereum.}
+\title{ether: An R package for working with Ethereum.}
 \description{
-The ethereum package provides an interface to the Ethereum RPC functions.
+The ether package provides an interface to the Ethereum RPC functions.
 }
