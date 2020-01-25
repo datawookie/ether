@@ -16,9 +16,3 @@ with_mock_api({
     expect_equal(tx$blockHash, "0xd3ca9f0659473d93a00dc2076c2c9e8d7805243c59c8cb0d3501b262f98a15f1")
   })
 })
-
-
-# capture_requests({
-#   eth_getTransactionByBlockHashAndIndex("0xd3ca9f0659473d93a00dc2076c2c9e8d7805243c59c8cb0d3501b262f98a15f1", "0x0")
-#   eth_getTransactionByBlockNumberAndIndex("0x493c5f", "0x0")
-# })
