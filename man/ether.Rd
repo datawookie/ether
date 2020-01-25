@@ -3,7 +3,6 @@
 \docType{package}
 \name{ether}
 \alias{ether}
-\alias{ether-package}
 \title{ether: An R package for working with Ethereum.}
 \description{
 The ether package provides an interface to the Ethereum RPC functions.

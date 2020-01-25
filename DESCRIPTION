@@ -14,7 +14,7 @@ Imports:
     httr,
     jsonlite,
     Rmpfr
-RoxygenNote: 6.1.0
+RoxygenNote: 7.0.2
 Suggests:
     testthat,
     httptest
