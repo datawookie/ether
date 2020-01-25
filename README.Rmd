@@ -16,7 +16,7 @@ source("setup-key-for-test.R")
 
 # ether
 
-[![Travis-CI Build Status](https://travis-ci.org/DataWookie/ether.svg?branch=master)](https://travis-ci.org/DataWookie/ether)
+[![Travis-CI Build Status](https://travis-ci.org/datawookie/ether.svg?branch=master)](https://travis-ci.org/datawookie/ether)
 
 The `ether` package provides functions for interacting with the Ethereum network.
 
@@ -28,7 +28,7 @@ Install from GitHub using
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
-devtools::install_github("DataWookie/ether")
+devtools::install_github("datawookie/ether")
 ```
 
 Alternatively there is a stable version listed on CRAN.
