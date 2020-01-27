@@ -16,5 +16,4 @@ Imports:
     Rmpfr
 RoxygenNote: 7.0.2
 Suggests:
-    testthat,
-    httptest
+    testthat
