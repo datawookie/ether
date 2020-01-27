@@ -1,6 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.travis\.yml$
+.Renviron
 setup-key-for-test.R
 ^README\.Rmd$
 ^README-.*\.png$
